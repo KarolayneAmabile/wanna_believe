@@ -1,0 +1,20 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Regras para imagens de postagens
+    match /posts/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null
+                   && request.resource.size < 10 * 1024 * 1024
+                   && request.resource.contentType.matches('image/.*');
+    }
+
+    // Regras para fotos de perfil
+    match /profiles/{userId} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null
+                   && (userId == request.auth.uid || userId.startsWith(request.auth.uid));
+    }
+  }
+}

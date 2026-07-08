@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Tema base do sistema (splash/janela); o tema real da UI é controlado
+         pelo Compose em ui/theme/Theme.kt -->
+    <style name="Theme.WannaBelieve" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">@color/forest_night</item>
+        <item name="android:windowBackground">@color/forest_night</item>
+    </style>
+</resources>
